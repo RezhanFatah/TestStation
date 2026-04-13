@@ -1,7 +1,13 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { Mail, GraduationCap, FlaskConical, Sparkles } from "lucide-react";
+import {
+  Mail,
+  GraduationCap,
+  FlaskConical,
+  Sparkles,
+  ArrowRight,
+} from "lucide-react";
 
 const Scene = dynamic(() => import("@/components/Scene"), { ssr: false });
 
@@ -43,6 +49,17 @@ export default function Home() {
         <div className="rounded-full border border-white/10 bg-white/5 px-5 py-2 text-xs font-medium uppercase tracking-[0.2em] text-white/50 backdrop-blur-sm">
           Coming Soon
         </div>
+
+        {/* Waitlist CTA */}
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSfiVmWNrtgHhHB6t8WNr2Oqmg-q12aFNC5psNqFomO7gYzGKA/viewform"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-6 py-3 text-sm font-medium text-white/70 backdrop-blur-sm transition-all hover:border-white/30 hover:bg-white/10 hover:text-white"
+        >
+          Join the Waitlist
+          <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+        </a>
 
         {/* Contact */}
         <a
