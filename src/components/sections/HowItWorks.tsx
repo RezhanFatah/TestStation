@@ -12,14 +12,14 @@ const steps = [
     num: "02",
     role: "Student",
     title: "Students take timed tests — and flag their guesses",
-    desc: "Students work through questions one at a time under a real aggregate timer — mirroring the actual digital SAT. On any question they can mark \"I'm guessing\" before moving on. Sessions auto-save; if they close the browser, they pick up exactly where they left off.",
+    desc: "Students work through questions one at a time under a real aggregate timer — mirroring actual Standarzied Tests. On any question they can mark \"I'm guessing\" before moving on. Sessions auto-save; if they close the browser, they pick up exactly where they left off.",
     tags: ["aggregate timer", "guess flagging", "auto-resume"],
   },
   {
     num: "03",
     role: "System",
     title: "Every answer is a structured behavioral data event",
-    desc: "As students work, TestStation captures response time per question, guess flags, skipped questions, topic, and difficulty for every single answer. This isn't just a score — it's a behavioral record of how each student thinks under pressure.",
+    desc: "As students work, TestStation captures pacing-rate, guess flags, skipped questions, topic, and difficulty for every single answer. This isn't just a score — it's a behavioral record of how each student thinks under pressure.",
     tags: ["time per question", "guess detection", "skip tracking"],
   },
   {

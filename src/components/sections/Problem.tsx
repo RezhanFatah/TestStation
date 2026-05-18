@@ -1,10 +1,10 @@
 import ScrollReveal from "@/components/ScrollReveal";
 
 const tools = [
-  { name: "AP Classroom",     gap: "Shows scores only. No behavioral data." },
-  { name: "Khan Academy",     gap: "Self-directed. No institutional layer." },
-  { name: "Private tutoring", gap: "Expensive, unscalable, data-free." },
-  { name: "Practice books",   gap: "No personalization. No feedback loop." },
+  { name: "AP Classroom", gap: "Shows scores only. No behavioral data." },
+  { name: "Khan Academy", gap: "Self-directed. No institutional layer." },
+  { name: "Legacy Testing Software", gap: "Outdated, general, admin bottle-neck" },
+  { name: "Practice books", gap: "No personalization. No feedback loop." },
 ];
 
 const problems = [
@@ -48,8 +48,8 @@ export default function Problem() {
             className="font-playfair font-bold leading-[1.15]"
             style={{ fontSize: "clamp(26px, 3.2vw, 42px)", color: "white", letterSpacing: "-0.02em" }}
           >
-            Your students test, you should analyze.<br className="hidden sm:block" />
-            Turn behavioral signals into better teaching.
+            Your students test, we analyze.<br className="hidden sm:block" />
+            Turn insights into cirricular pathways.
           </h2>
         </ScrollReveal>
 
@@ -66,7 +66,7 @@ export default function Problem() {
                 &ldquo;I studied for weeks. Got my score back. Still had no idea what to fix.&rdquo;
               </p>
               <cite className="text-[13px] not-italic" style={{ color: "rgba(255,255,255,0.4)" }}>
-                — Student preparing for the digital SAT
+                — Students during test-prep
               </cite>
             </blockquote>
 

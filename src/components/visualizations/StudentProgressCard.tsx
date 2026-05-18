@@ -19,15 +19,17 @@ export default function StudentProgressCard({ scores = DEFAULT_SCORES }: Student
   const isUp = delta >= 0;
 
   const topicPills = [
-    { label: "Geometry · 44%",      variant: "weak" },
+    { label: "Geometry · 44%", variant: "weak" },
     { label: "Data Analysis · 57%", variant: "mid" },
-    { label: "Word Problems · 61%", variant: "mid" },
+    { label: "Word Problems · 96%", variant: "strong" },
   ];
 
   const pillStyle = (v: string) =>
     v === "weak"
-      ? { background: "var(--ts-red-bg)",   color: "var(--ts-red)",   border: "1px solid rgba(192,64,64,0.2)" }
-      : { background: "var(--ts-amber-bg)", color: "var(--ts-amber)", border: "1px solid rgba(184,112,32,0.2)" };
+      ? { background: "var(--ts-red-bg)", color: "var(--ts-red)", border: "1px solid rgba(192,64,64,0.2)" }
+      : v === "strong"
+        ? { background: "var(--ts-green-bg)", color: "var(--ts-green)", border: "1px solid rgba(32,160,64,0.18)" }
+        : { background: "var(--ts-amber-bg)", color: "var(--ts-amber)", border: "1px solid rgba(184,112,32,0.2)" };
 
   return (
     <div
@@ -40,7 +42,7 @@ export default function StudentProgressCard({ scores = DEFAULT_SCORES }: Student
       {/* Header */}
       <div className="flex items-center justify-between mb-5">
         <span className="text-[13px] font-semibold" style={{ color: "var(--ts-text)" }}>
-          Your progress — last 5 tests
+          Your progress — last 5 SAT Practice tests
         </span>
         <span
           className="text-[11px] font-semibold px-[9px] py-[3px] rounded-full"
@@ -165,7 +167,7 @@ export default function StudentProgressCard({ scores = DEFAULT_SCORES }: Student
           className="text-[11px] font-semibold uppercase tracking-[0.06em] mb-[10px]"
           style={{ color: "var(--ts-text-3)" }}
         >
-          Weakest topics
+          Topics Insight
         </div>
         <div className="flex flex-wrap gap-2">
           {topicPills.map((p) => (

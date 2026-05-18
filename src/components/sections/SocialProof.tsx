@@ -1,27 +1,27 @@
 import ScrollReveal from "@/components/ScrollReveal";
 import CohortHeatmap from "@/components/visualizations/CohortHeatmap";
 
-const testimonials = [
-  {
-    stars: 5,
-    quote: "We've been running practice tests for years and the only thing we ever got was a score. Knowing which questions students guessed changes everything about how I structure review sessions.",
-    initials: "MA",
-    name: "SAT Prep Instructor",
-    role: "Boston-area test prep academy · Pilot partner",
-  },
-  {
-    stars: 5,
-    quote: "I always knew I was guessing, but I didn't realize how much of my score was just luck. Seeing the data made it real — and gave me something to actually fix.",
-    initials: "ST",
-    name: "High school junior",
-    role: "SAT target: 1400+ · Pilot cohort student",
-  },
-];
+// const testimonials = [
+//   {
+//     stars: 5,
+//     quote: "We've been running practice tests for years and the only thing we ever got was a score. Knowing which questions students guessed changes everything about how I structure review sessions.",
+//     initials: "MA",
+//     name: "SAT Prep Instructor",
+//     role: "Boston-area test prep academy · Pilot partner",
+//   },
+//   {
+//     stars: 5,
+//     quote: "I always knew I was guessing, but I didn't realize how much of my score was just luck. Seeing the data made it real — and gave me something to actually fix.",
+//     initials: "ST",
+//     name: "High school junior",
+//     role: "SAT target: 1400+ · Pilot cohort student",
+//   },
+// ];
 
 export default function SocialProof() {
   return (
     <section id="proof" className="px-[5%] py-[76px] md:py-[104px]" style={{ background: "var(--ts-warm-bg)" }}>
-      <ScrollReveal className="mb-14 md:mb-16 text-center">
+      {/* <ScrollReveal className="mb-14 md:mb-16 text-center">
         <div className="w-9 h-[3px] rounded-full mb-3 mx-auto" style={{ background: "var(--ts-orange)" }} />
         <div className="text-[12px] font-semibold tracking-[0.1em] uppercase mb-3" style={{ color: "var(--ts-orange)" }}>
           Feedback
@@ -66,7 +66,7 @@ export default function SocialProof() {
             </div>
           </ScrollReveal>
         ))}
-      </div>
+      </div> */}
 
       <ScrollReveal>
         <div className="mb-7">

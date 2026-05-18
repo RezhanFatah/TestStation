@@ -50,7 +50,7 @@ export default function Hero() {
       {/* Content */}
       <div className="hero-content relative z-10 flex flex-col items-start">
         {/* Eyebrow */}
-        <div
+        {/* <div
           className="hero-eyebrow-anim inline-flex items-center gap-2 text-[12px] font-semibold tracking-[0.1em] uppercase px-3 py-[5px] rounded-full mb-6"
           style={{
             color: "var(--ts-orange)",
@@ -60,7 +60,7 @@ export default function Hero() {
         >
           <span className="pulse-dot w-[6px] h-[6px] rounded-full" style={{ background: "var(--ts-orange)" }} />
           Pilot launching June 2026
-        </div>
+        </div> */}
 
         {/* H1 */}
         <h1
@@ -84,7 +84,7 @@ export default function Hero() {
             lineHeight: 1.75,
           }}
         >
-          TestStation gives SAT academies the behavioral analytics layer that score reports were never designed to provide — time per question, guess patterns, mistake trends, and the dashboards to act on all of it.
+          TestStation gives academic institutions the behavioral analytics layer that score reports were never designed to provide — time per question, guess patterns, mistake trends, and the dashboards to act on all of it.
         </p>
 
         {/* Actions */}
@@ -107,18 +107,6 @@ export default function Hero() {
               <path d="M3 7h8M7 4l3 3-3 3" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
             </svg>
           </a>
-        </div>
-
-        {/* Trust bar */}
-        <div
-          className="hero-trust-anim mt-12 flex items-center gap-4 flex-wrap text-[13px]"
-          style={{ color: "var(--ts-text-3)" }}
-        >
-          <span>Invite-only pilot</span>
-          <div className="w-px h-4 hidden sm:block" style={{ background: "var(--ts-border-2)" }} />
-          <span>1 confirmed academy partner</span>
-          <div className="w-px h-4 hidden sm:block" style={{ background: "var(--ts-border-2)" }} />
-          <span>Built for SAT academies</span>
         </div>
       </div>
 

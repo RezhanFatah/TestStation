@@ -16,11 +16,11 @@ const plans: PricingPlan[] = [
   {
     tier: "For small academies",
     name: "Starter",
-    price: "TBD",
-    unit: "/ month",
+    price: "$30",
+    unit: "/month",
     desc: "For academies ready to add a behavioral analytics layer to their existing test prep program.",
     features: [
-      "Up to 30 students",
+      "Up to 20 students",
       "Unlimited tests",
       "Student + instructor dashboards",
       "Behavioral data capture",
@@ -31,16 +31,16 @@ const plans: PricingPlan[] = [
   {
     tier: "Recommended",
     name: "Classroom",
-    price: "TBD",
-    unit: "/ month",
+    price: "$3",
+    unit: "/student/month",
     desc: "For established academies that want cohort analytics, AI coaching, and full program visibility.",
     features: [
-      "Unlimited students",
+      "Up to 150 students (21 student min",
       "Everything in Starter",
       "Cohort-level analytics",
       "Flag view — high guess rates & score drops",
       "Per-student attempt override controls",
-      "Dedicated onboarding call",
+      "Dedicated onboarding support (3 months)",
     ],
     cta: "Contact us",
     featured: true,
@@ -48,8 +48,8 @@ const plans: PricingPlan[] = [
   {
     tier: "For schools & districts",
     name: "Institutional",
-    price: "TBD",
-    unit: "/ year",
+    price: "contact sales",
+    unit: "",
     desc: "For schools and districts running test prep at scale — multiple instructors, cohorts, and departments under one roof.",
     features: [
       "Everything in Classroom",
@@ -93,8 +93,8 @@ export default function Pricing() {
               border: plan.featured
                 ? "1px solid var(--ts-orange)"
                 : plan.dark
-                ? "1px solid var(--ts-text)"
-                : "1px solid var(--ts-border)",
+                  ? "1px solid var(--ts-text)"
+                  : "1px solid var(--ts-border)",
               background: plan.featured ? "white" : plan.dark ? "var(--ts-text)" : "var(--ts-warm-bg)",
               boxShadow: plan.featured ? "0 0 0 4px rgba(194,97,15,0.08)" : undefined,
             }}
@@ -138,10 +138,20 @@ export default function Pricing() {
 
             <a
               href="#contact"
-              className={`block w-full text-center py-[13px] rounded-[10px] text-[15px] font-semibold no-underline ${
-                plan.featured || plan.dark ? "ts-pricing-solid" : "ts-pricing-outline"
-              }`}
+              className={`block w-full text-center py-[13px] rounded-[10px] text-[15px] font-semibold no-underline ${plan.featured || plan.dark ? "ts-pricing-solid" : "ts-pricing-outline"
+                }`}
+              style={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                bottom: 10,
+                marginLeft: "auto",
+                marginRight: "auto",
+                width: "calc(100% - 48px)", // Account for parent padding of 2.25rem (36px * 2 = 72px, so we need to leave 36px left/right)
+                ...((plan.featured || plan.dark) && { /* If you want to preserve any solid/outline color logic */ }),
+              }}
             >
+
               {plan.cta}
             </a>
           </ScrollReveal>
@@ -149,7 +159,7 @@ export default function Pricing() {
       </div>
 
       <ScrollReveal className="text-center mt-6 text-[13px]" style={{ color: "var(--ts-text-3)" }}>
-        Piloting with academies this summer. Pricing locked before public launch.
+        Piloting with academies this summer. Pricing negotiable before public launch.
       </ScrollReveal>
     </section>
   );

@@ -22,7 +22,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "TestStation — Test-Prep With Confidence",
+  title: "TestStation",
   description:
     "TestStation gives SAT academies the behavioral analytics layer that score reports were never designed to provide — time per question, guess patterns, mistake trends, and dashboards to act on all of it.",
 };

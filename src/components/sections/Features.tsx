@@ -4,7 +4,7 @@ import StudentProgressCard from "@/components/visualizations/StudentProgressCard
 const features = [
   {
     title: "Behavioral data capture",
-    desc: "Response time per question, guess flags, skip tracking, and correctness — written as structured events on every single answer, not just at submission.",
+    desc: "Pacing-rate, guess flags, skip tracking, and correctness — written as structured events on every single answer, not just at submission.",
     icon: (
       <svg viewBox="0 0 22 22" fill="none" stroke="var(--ts-orange)" strokeWidth="1.5" strokeLinecap="round">
         <circle cx="11" cy="11" r="9" /><circle cx="11" cy="11" r="5.5" /><circle cx="11" cy="11" r="2" />
@@ -14,7 +14,7 @@ const features = [
   },
   {
     title: "In-app test builder",
-    desc: "Instructors author and manage tests entirely inside TestStation. Multiple choice, topic tags, difficulty levels, and time limits — all in one place.",
+    desc: "Instructors author and manage tests entirely inside TestStation, or import existing tests seamlessly with AI. Multiple choice, topic tags, difficulty levels, and time limits — all in one place.",
     icon: (
       <svg viewBox="0 0 22 22" fill="none" stroke="var(--ts-orange)" strokeWidth="1.5" strokeLinecap="round">
         <rect x="2" y="3" width="18" height="16" rx="3" />
@@ -23,7 +23,7 @@ const features = [
     ),
   },
   {
-    title: "Classroom management",
+    title: "Classroom management and Institutional Management",
     desc: "Assign tests to a whole classroom or individual students. Set due dates and retake limits. Grant extra attempts to specific students — all from one dashboard.",
     icon: (
       <svg viewBox="0 0 22 22" fill="none" stroke="var(--ts-orange)" strokeWidth="1.5" strokeLinecap="round">
@@ -33,7 +33,7 @@ const features = [
   },
   {
     title: "Instructor cohort dashboard",
-    desc: "See average scores, weakest topics, guess rate distribution, and per-question class performance — and get flagged when someone is falling behind.",
+    desc: "See score analytics, weakest topics, guess rate distribution, and per-question class performance — and get flagged when someone is falling behind.",
     icon: (
       <svg viewBox="0 0 22 22" fill="none" stroke="var(--ts-orange)" strokeWidth="1.5" strokeLinecap="round">
         <polyline points="2,17 8,11 13,14 20,6" />
@@ -53,7 +53,7 @@ const features = [
   },
   {
     title: "Aggregate timer + auto-save",
-    desc: "A single countdown timer mirrors the real digital SAT. Students can close the browser and resume — the clock picks up from exactly where it left off.",
+    desc: "A single countdown timer mirrors real-world test Environments. Students can close the browser and resume — the clock picks up from exactly where it left off.",
     icon: (
       <svg viewBox="0 0 22 22" fill="none" stroke="var(--ts-orange)" strokeWidth="1.5" strokeLinecap="round">
         <circle cx="11" cy="11" r="9" /><polyline points="11,6 11,11 14,14" />

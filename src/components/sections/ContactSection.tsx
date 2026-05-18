@@ -11,13 +11,13 @@ import ScrollReveal from "@/components/ScrollReveal";
 //    FORM_ACTION = https://docs.google.com/forms/d/e/FORM_ID/formResponse
 //    Entry IDs   = the entry.XXXXXXXX values in the pre-filled URL
 // ─────────────────────────────────────────────────────────────────────
-const GOOGLE_FORM_ACTION = "TODO_REPLACE_WITH_GOOGLE_FORM_ACTION_URL";
+const GOOGLE_FORM_ACTION = "https://docs.google.com/forms/d/e/1FAIpQLSfiVmWNrtgHhHB6t8WNr2Oqmg-q12aFNC5psNqFomO7gYzGKA/formResponse";
 const ENTRY = {
-  name:    "entry.TODO_NAME",
-  email:   "entry.TODO_EMAIL",
-  role:    "entry.TODO_ROLE",
-  org:     "entry.TODO_ORG",
-  message: "entry.TODO_MESSAGE",
+  name: "entry.24202561",
+  email: "entry.1859352303",
+  role: "entry.1095911239",
+  org: "entry.104496060",
+  message: "entry.1381314746",
 };
 
 const ROLES = [
@@ -26,7 +26,11 @@ const ROLES = [
   "School Administrator",
   "Curriculum Coordinator",
   "Other",
-];
+] as const;
+
+const OTHER_ROLE = "Other";
+/** Must match Google Forms: blank 5th dropdown option posts as "", not "Other". */
+const GOOGLE_OTHER_ROLE_VALUE = "";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -43,25 +47,48 @@ const inputBase: React.CSSProperties = {
   transition: "border-color 0.2s, box-shadow 0.2s",
 };
 
+const selectStyle: React.CSSProperties = {
+  ...inputBase,
+  appearance: "none",
+  WebkitAppearance: "none",
+  backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%236B6560' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "right 12px center",
+  paddingRight: "36px",
+  cursor: "pointer",
+};
+
 export default function ContactSection() {
-  const [name, setName]       = useState("");
-  const [email, setEmail]     = useState("");
-  const [role, setRole]       = useState("");
-  const [org, setOrg]         = useState("");
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [role, setRole] = useState("");
+  const [roleOther, setRoleOther] = useState("");
+  const [org, setOrg] = useState("");
   const [message, setMessage] = useState("");
-  const [status, setStatus]   = useState<Status>("idle");
+  const [status, setStatus] = useState<Status>("idle");
+
+  const isOtherRole = role === OTHER_ROLE;
+  const roleComplete = Boolean(role && (!isOtherRole || roleOther.trim()));
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    if (!name || !email || !role) return;
+    if (!name || !email || !roleComplete) return;
     setStatus("submitting");
     try {
+      const roleValue = isOtherRole ? GOOGLE_OTHER_ROLE_VALUE : role;
+      const messageValue =
+        isOtherRole && roleOther.trim()
+          ? message.trim()
+            ? `Role: ${roleOther.trim()}\n\n${message.trim()}`
+            : `Role: ${roleOther.trim()}`
+          : message;
+
       const body = new FormData();
       body.append(ENTRY.name, name);
       body.append(ENTRY.email, email);
-      body.append(ENTRY.role, role);
+      body.append(ENTRY.role, roleValue);
       body.append(ENTRY.org, org);
-      body.append(ENTRY.message, message);
+      body.append(ENTRY.message, messageValue);
       await fetch(GOOGLE_FORM_ACTION, { method: "POST", mode: "no-cors", body });
       setStatus("success");
     } catch {
@@ -163,19 +190,42 @@ export default function ContactSection() {
                 <div className="flex flex-col gap-1.5 mb-3.5">
                   <label className="text-[13px] font-semibold" style={{ color: "var(--ts-text)" }}>Role</label>
                   <select
-                    required value={role} onChange={(e) => setRole(e.target.value)}
-                    style={{
-                      ...inputBase,
-                      appearance: "none", WebkitAppearance: "none",
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L6 7L11 1' stroke='%236B6560' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: "no-repeat", backgroundPosition: "right 12px center",
-                      paddingRight: "36px", cursor: "pointer",
+                    required
+                    value={role}
+                    onChange={(e) => {
+                      const next = e.target.value;
+                      setRole(next);
+                      if (next !== OTHER_ROLE) setRoleOther("");
                     }}
-                    onFocus={focusStyle} onBlur={blurStyle}
+                    style={selectStyle}
+                    onFocus={focusStyle}
+                    onBlur={blurStyle}
                   >
                     <option value="" disabled>Select your role…</option>
-                    {ROLES.map((r) => <option key={r}>{r}</option>)}
+                    {ROLES.map((r) => (
+                      <option key={r} value={r}>
+                        {r}
+                      </option>
+                    ))}
                   </select>
+                  {isOtherRole && (
+                    <div className="flex flex-col gap-1.5 mt-3.5">
+                      <label className="text-[13px] font-semibold" style={{ color: "var(--ts-text)" }}>
+                        Please specify your role
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="e.g. Parent, consultant, district lead…"
+                        required
+                        value={roleOther}
+                        onChange={(e) => setRoleOther(e.target.value)}
+                        style={inputBase}
+                        onFocus={focusStyle}
+                        onBlur={blurStyle}
+                        autoFocus
+                      />
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex flex-col gap-1.5 mb-3.5">
@@ -205,9 +255,9 @@ export default function ContactSection() {
 
                 <button
                   type="submit"
-                  disabled={status === "submitting" || !name || !email || !role}
+                  disabled={status === "submitting" || !name || !email || !roleComplete}
                   className="ts-submit-btn w-full flex items-center justify-center gap-2 rounded-[10px] mt-5 text-[15px] font-semibold text-white cursor-pointer"
-                  style={{ padding: "13px", border: "none", fontFamily: "inherit", opacity: (!name || !email || !role) ? 0.65 : 1 }}
+                  style={{ padding: "13px", border: "none", fontFamily: "inherit", opacity: (!name || !email || !roleComplete) ? 0.65 : 1 }}
                 >
                   {status === "submitting" ? (
                     <>
